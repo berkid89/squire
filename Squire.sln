@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Squire", "Squire\Squire.csproj", "{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{C69F549A-A4BA-4934-A7CD-735903E0F3EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9E5EB68-C47E-4BBD-9124-F57C58013629}
+	EndGlobalSection
+EndGlobal
