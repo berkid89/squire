@@ -3,12 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Squire.BusinessLogic.Models;
+using Squire.BusinessLogic.Services.Interfaces;
 
 namespace Squire.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        public SampleDataController(IDataAccess da)
+        {
+            var sw = new Software()
+            {
+                Name = "test sw",
+                Description = "this is the desc.",
+            };
+
+            var devEnv = new Env()
+            {
+                Name = "DEV",
+            };
+
+            devEnv.ReleaseNotes.Add(new ReleaseNote()
+            {
+                Summary = "this is the summary!",
+                VersionNumber = "1.5.678",
+                Bugfixes = new List<Bugfix>() { new Bugfix() { Description = "Timeout in task list was fixed" } }
+            });
+
+            var prodEnv = new Env()
+            {
+                Name = "PROD"
+            };
+
+            sw.Envs.Add(devEnv);
+            sw.Envs.Add(prodEnv);
+
+            da.Insert(sw);
+        }
+
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

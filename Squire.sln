@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Squire", "Squire\Squire.csproj", "{FB6F31FA-01D5-4283-8D2D-E97B6B0FE8D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{C69F549A-A4BA-4934-A7CD-735903E0F3EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp", "DemoApp\DemoApp.csproj", "{C69F549A-A4BA-4934-A7CD-735903E0F3EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squire.BusinessLogic", "Squire.BusinessLogic\Squire.BusinessLogic.csproj", "{6E96B787-66AB-4044-9455-A60148D8F172}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C69F549A-A4BA-4934-A7CD-735903E0F3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E96B787-66AB-4044-9455-A60148D8F172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E96B787-66AB-4044-9455-A60148D8F172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E96B787-66AB-4044-9455-A60148D8F172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E96B787-66AB-4044-9455-A60148D8F172}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

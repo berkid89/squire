@@ -13,31 +13,18 @@
 *.userprefs
 
 # Build results
-Squire/[Dd]ebug/
-Squire/[Dd]ebugPublic/
-Squire/[Rr]elease/
-Squire/[Rr]eleases/
-Squire/x64/
-Squire/x86/
-Squire/build/
-Squire/bld/
-Squire/bin/
-Squire/Bin/
-Squire/obj/
-Squire/Obj/
-
-DemoApp/[Dd]ebug/
-DemoApp/[Dd]ebugPublic/
-DemoApp/[Rr]elease/
-DemoApp/[Rr]eleases/
-DemoApp/x64/
-DemoApp/x86/
-DemoApp/build/
-DemoApp/bld/
-DemoApp/bin/
-DemoApp/Bin/
-DemoApp/obj/
-DemoApp/Obj/
+*/[Dd]ebug/
+*/[Dd]ebugPublic/
+*/[Rr]elease/
+*/[Rr]eleases/
+*/x64/
+*/x86/
+*/build/
+*/bld/
+*/bin/
+*/Bin/
+*/obj/
+*/Obj/
 
 # Visual Studio 2015 cache/options directory
 .vs/

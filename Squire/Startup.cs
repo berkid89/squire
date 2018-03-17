@@ -7,42 +7,58 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
+using Squire.BusinessLogic.Services;
+using Squire.BusinessLogic.Services.Interfaces;
+using Squire.BusinessLogic.Settings;
+using Squire.Core.Middlewares;
 
 namespace Squire
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        private readonly ILogger logger;
+        private readonly ISettings settings;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+
+            settings = new Settings(Configuration);
+            logger = configureLogger(settings);
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(p => settings);
+            services.AddSingleton(p => logger);
+
+            services.AddScoped<IDataAccess, DataAccess>();
+
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {
                     HotModuleReplacement = true,
                     ReactHotModuleReplacement = true
                 });
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
 
             app.UseStaticFiles();
+
+            app.UseGlobalErrorHandler(env.IsDevelopment());
 
             app.UseMvc(routes =>
             {
@@ -54,6 +70,16 @@ namespace Squire
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+        }
+
+        private ILogger configureLogger(ISettings settings)
+        {
+            return new LoggerConfiguration()
+              .Enrich.FromLogContext()
+              .MinimumLevel.Verbose()
+              .WriteTo.ColoredConsole(settings.Logging.LogLevel, "{NewLine}{Timestamp:HH:mm:ss} [{Level}] ({CorrelationToken}) {Message}{NewLine}{Exception}")
+              .WriteTo.MongoDB(settings.ConnectionString + settings.Database, "logs", settings.Logging.LogLevel)
+              .CreateLogger();
         }
     }
 }
