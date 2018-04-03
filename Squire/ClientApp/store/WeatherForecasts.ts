@@ -74,7 +74,6 @@ export const reducer: Reducer<WeatherForecastsState> = (state: WeatherForecastsS
         case 'RECEIVE_WEATHER_FORECASTS':
             // Only accept the incoming data if it matches the most recent request. This ensures we correctly
             // handle out-of-order responses.
-            debugger;
             if (action.startDateIndex === state.startDateIndex) {
                 return {
                     startDateIndex: action.startDateIndex,

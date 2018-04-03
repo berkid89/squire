@@ -14,6 +14,6 @@ namespace Squire.BusinessLogic.Services.Interfaces
 
         void Delete(ObjectId id);
 
-        Software Get(string id);
+        Software Get(ObjectId id);
     }
 }
