@@ -40,9 +40,10 @@ namespace Squire.BusinessLogic.Services
             db.GetCollection<Software>(softwaresCollection).DeleteOne(p => p.Id == id);
         }
 
-        public Software Get(ObjectId id)
+        public Software Get(string id)
         {
-            return db.GetCollection<Software>(softwaresCollection).Find(p => p.Id == id).FirstOrDefault();
+            var oid = ObjectId.Parse(id);
+            return db.GetCollection<Software>(softwaresCollection).Find(p => p.Id == oid).FirstOrDefault();
         }
     }
 }
