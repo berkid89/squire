@@ -12,7 +12,7 @@ namespace Squire.BusinessLogic.Services.Interfaces
 
         void Insert(Software sw);
 
-        void Delete(ObjectId id);
+        void Delete(string id);
 
         Software Get(string id);
     }

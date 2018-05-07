@@ -41,6 +41,7 @@ namespace Squire
             services.AddSingleton(p => logger);
 
             services.AddScoped<IDataAccess, DataAccess>();
+            services.AddScoped<IWidgetService, WidgetService>();
 
             services.AddMvc();
         }

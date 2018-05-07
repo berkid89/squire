@@ -11,16 +11,16 @@ namespace Squire.Controllers
 {
     public class WidgetController : Controller
     {
-        private IDataAccess da;
+        private IWidgetService ws;
 
-        public WidgetController(IDataAccess da)
+        public WidgetController(IWidgetService ws)
         {
-            this.da = da;
+            this.ws = ws;
         }
 
-        public IActionResult Show([FromQuery] string id)
+        public IActionResult Show([FromQuery] string id, [FromQuery] string envName)
         {
-            return Json(da.Get(id));
+            return Json(ws.Get(id, envName));
         }
     }
 }

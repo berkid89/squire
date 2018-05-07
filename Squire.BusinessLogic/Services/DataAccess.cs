@@ -35,15 +35,14 @@ namespace Squire.BusinessLogic.Services
             db.GetCollection<Software>(softwaresCollection).InsertOne(sw);
         }
 
-        public void Delete(ObjectId id)
+        public void Delete(string id)
         {
             db.GetCollection<Software>(softwaresCollection).DeleteOne(p => p.Id == id);
         }
 
         public Software Get(string id)
         {
-            var oid = ObjectId.Parse(id);
-            return db.GetCollection<Software>(softwaresCollection).Find(p => p.Id == oid).FirstOrDefault();
+            return db.GetCollection<Software>(softwaresCollection).Find(p => p.Id == id).FirstOrDefault();
         }
     }
 }
