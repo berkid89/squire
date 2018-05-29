@@ -11,5 +11,7 @@ namespace Squire.BusinessLogic.Settings
         string Database { get; }
 
         LoggerSettings Logging { get; }
+
+        int PerformaceWarningMinimumInMS { get; }
     }
 }

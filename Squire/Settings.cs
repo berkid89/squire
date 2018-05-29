@@ -16,6 +16,8 @@ namespace Squire
 
         public string Database { get; }
 
+        public int PerformaceWarningMinimumInMS { get; }
+
         public Settings(IConfiguration config)
         {
             if (!string.IsNullOrEmpty(config["Logging:LogLevel"]))
@@ -25,6 +27,8 @@ namespace Squire
                     LogLevel = (LogEventLevel)Enum.Parse(typeof(LogEventLevel), config["Logging:LogLevel"]),
                 };
             }
+
+            PerformaceWarningMinimumInMS = config.GetValue<int>("PerformaceWarningMinimumInMS");
 
             ConnectionString = config["ConnectionString"];
             Database = config["Database"];

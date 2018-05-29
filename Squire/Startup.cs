@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Net.Http.Headers;
 using Serilog;
 using Squire.BusinessLogic.Services;
 using Squire.BusinessLogic.Services.Interfaces;
@@ -50,24 +51,29 @@ namespace Squire
         {
             if (env.IsDevelopment())
             {
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true,
-                    ReactHotModuleReplacement = true
-                });
+                //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                //{
+                //    HotModuleReplacement = true,
+                //    ReactHotModuleReplacement = true
+                //});
             }
 
             app.UseStaticFiles();
 
             app.UseGlobalErrorHandler(env.IsDevelopment());
+            app.UseCorrelationToken();
+            app.UseRequestLogging();
+            app.UsePerformanceLogging(settings.PerformaceWarningMinimumInMS);
+
+            app.UseCors(builder => builder.WithExposedHeaders(HeaderNames.ContentDisposition).AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod().AllowCredentials());
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "api/v1/{controller}/{action}/{id?}");
 
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
+                //routes.MapSpaFallbackRoute(
+                //    name: "spa-fallback",
+                //    defaults: new { controller = "Home", action = "Index" });
             });
         }
 

@@ -18,6 +18,7 @@ namespace Squire.Controllers
             this.ws = ws;
         }
 
+        [HttpGet]
         public IActionResult Show([FromQuery] string id, [FromQuery] string envName)
         {
             return Json(ws.Get(id, envName));
