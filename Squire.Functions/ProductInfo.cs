@@ -21,7 +21,8 @@ namespace Squire.Functions
 
             var product = await repo.GetProductInfo(req.Query["productId"]);
 
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            if (product == null)
+                return new NotFoundResult();
 
             return new JsonResult(product);
         }
